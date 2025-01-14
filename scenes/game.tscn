@@ -10,12 +10,16 @@ script = ExtResource("1_f8iw1")
 position = Vector2(500, 550)
 texture = ExtResource("2_eucd2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Hud" type="CanvasLayer" parent="."]
 
-[node name="ScorePanel" type="Panel" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ScorePanel" type="Panel" parent="Hud"]
+offset_right = 1000.0
+offset_bottom = 50.0
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="ScoreLabel" type="Label" parent="Hud"]
+offset_right = 1000.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 40
+text = "SCORE: "
+horizontal_alignment = 1
+vertical_alignment = 1
