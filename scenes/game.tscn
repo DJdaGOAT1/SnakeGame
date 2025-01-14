@@ -7,5 +7,15 @@
 script = ExtResource("1_f8iw1")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(502, 504)
+position = Vector2(500, 550)
 texture = ExtResource("2_eucd2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScorePanel" type="Panel" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
