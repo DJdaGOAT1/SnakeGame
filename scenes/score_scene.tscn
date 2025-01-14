@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://0pxo3jxniblu"]
+
+[ext_resource type="FontFile" uid="uid://b4d6v538rbead" path="res://assets/ka1.ttf" id="1_xstt5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4cwu"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ScoreScene" type="CanvasLayer"]
+
+[node name="ScorePanel" type="Panel" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s4cwu")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 387.0
+offset_top = 1.0
+offset_right = 640.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_xstt5")
+theme_override_font_sizes/font_size = 35
+text = "SCORE - 0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
