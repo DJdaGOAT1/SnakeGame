@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://coocllnpe6i3y"]
+[gd_scene load_steps=6 format=3 uid="uid://coocllnpe6i3y"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_f8iw1"]
 [ext_resource type="Texture2D" uid="uid://bak8kiokvvgcu" path="res://assets/bg.png" id="2_eucd2"]
+[ext_resource type="PackedScene" uid="uid://ba857dgtl7pye" path="res://scenes/snake_part.tscn" id="2_xj7ol"]
+[ext_resource type="PackedScene" uid="uid://bcftavbgys36h" path="res://game_over_scene.tscn" id="3_6h81c"]
 [ext_resource type="PackedScene" uid="uid://0pxo3jxniblu" path="res://scenes/score_scene.tscn" id="3_kemnk"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_f8iw1")
+snake_scene = ExtResource("2_xj7ol")
+
+[node name="GameOverScene" parent="." instance=ExtResource("3_6h81c")]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(500, 550)
 texture = ExtResource("2_eucd2")
 
+[node name="SnakePart" parent="Background" instance=ExtResource("2_xj7ol")]
+
 [node name="ScoreScene" parent="." instance=ExtResource("3_kemnk")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1

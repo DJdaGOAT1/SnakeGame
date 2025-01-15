@@ -35,7 +35,7 @@ func _ready():
 func new_game():
 	get_tree().paused = false
 	get_tree().call_group("segments", "queue_free")
-	$GameOverMenu.hide()
+	$GameOverScene.hide()
 	score = 0
 	$Hud.get_node("ScoreLabel").text = "SCORE: " + str(score)
 	move_direction = up
@@ -65,22 +65,22 @@ func _process(delta):
 func move_snake():
 	if can_move:
 		#update movement from keypresses
-		if Input.is_action_just_pressed("move_down") and move_direction != up:
+		if Input.is_action_just_pressed("movedown") and move_direction != up:
 			move_direction = down
 			can_move = false
 			if not game_started:
 				start_game()
-		if Input.is_action_just_pressed("move_up") and move_direction != down:
+		if Input.is_action_just_pressed("moveup") and move_direction != down:
 			move_direction = up
 			can_move = false
 			if not game_started:
 				start_game()
-		if Input.is_action_just_pressed("move_left") and move_direction != right:
+		if Input.is_action_just_pressed("moveleft") and move_direction != right:
 			move_direction = left
 			can_move = false
 			if not game_started:
 				start_game()
-		if Input.is_action_just_pressed("move_right") and move_direction != left:
+		if Input.is_action_just_pressed("moveright") and move_direction != left:
 			move_direction = right
 			can_move = false
 			if not game_started:
@@ -134,7 +134,7 @@ func move_food():
 	regen_food = true
 
 func end_game():
-	$GameOverMenu.show()
+	$GameOverScene.show()
 	$MoveTimer.stop()
 	game_started = false
 	get_tree().paused = true
