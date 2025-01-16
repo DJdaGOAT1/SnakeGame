@@ -4,6 +4,7 @@ extends Node
 
 #game variables
 var score : int
+var highscore : int
 var game_started : bool = false
 
 #grid variables
@@ -36,8 +37,9 @@ func new_game():
 	get_tree().paused = false
 	get_tree().call_group("segments", "queue_free")
 	$GameOverScene.hide()
+	highscore = score
 	score = 0
-	$Hud.get_node("ScoreLabel").text = "SCORE: " + str(score)
+	$ScoreScene.get_node("ScoreLabel").text = "SCORE: " + str(score)
 	move_direction = up
 	can_move = true
 	generate_snake()
@@ -61,7 +63,6 @@ func add_segment(pos):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_snake()
-	
 func move_snake():
 	if can_move:
 		#update movement from keypresses
@@ -86,12 +87,14 @@ func move_snake():
 			if not game_started:
 				start_game()
 
+	
+
 func start_game():
 	game_started = true
-	$MoveTimer.start()
+	$Timer.start()
 
 
-func _on_move_timer_timeout():
+func _on_timer_timeout():
 	#allow snake movement
 	can_move = true
 	#use the snake's previous position to move the segments
@@ -117,9 +120,12 @@ func check_self_eaten():
 			
 func check_food_eaten():
 	#if snake eats the food, add a segment and move the food
+	if(score >= highscore): 
+		highscore = score
+		
 	if snake_data[0] == food_pos:
 		score += 1
-		$Hud.get_node("ScoreLabel").text = "SCORE: " + str(score)
+		$ScoreScene.get_node("ScoreLabel").text = "SCORE: " + str(score)
 		add_segment(old_data[-1])
 		move_food()
 	
@@ -135,7 +141,7 @@ func move_food():
 
 func end_game():
 	$GameOverScene.show()
-	$MoveTimer.stop()
+	$Timer.stop()
 	game_started = false
 	get_tree().paused = true
 

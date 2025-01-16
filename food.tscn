@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://6wobohs5brkt"]
+
+[ext_resource type="Texture2D" uid="uid://c4qrurgihtfct" path="res://assets/apple.png" id="1_jrt13"]
+
+[node name="Food" type="Sprite2D"]
+position = Vector2(20, 50)
+scale = Vector2(0.069048, 0.0559586)
+texture = ExtResource("1_jrt13")
+offset = Vector2(25, 25)

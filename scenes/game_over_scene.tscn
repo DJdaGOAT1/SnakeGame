@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcftavbgys36h"]
+
+[ext_resource type="FontFile" uid="uid://b4d6v538rbead" path="res://assets/ka1.ttf" id="1_42noj"]
+[ext_resource type="Script" path="res://scripts/game_over_scene.gd" id="1_b4eea"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qd3l7"]
+bg_color = Color(0.158339, 0.034913, 0.30781, 1)
+
+[node name="GameOverScene" type="CanvasLayer"]
+script = ExtResource("1_b4eea")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -250.0
+offset_right = 375.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qd3l7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 239.0
+offset_top = 367.0
+offset_right = 778.0
+offset_bottom = 484.0
+theme_override_fonts/font = ExtResource("1_42noj")
+theme_override_font_sizes/font_size = 70
+text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+process_mode = 2
+offset_left = 321.0
+offset_top = 552.0
+offset_right = 684.0
+offset_bottom = 634.0
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+button_pressed = true
+text = "Play Again!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
