@@ -21,8 +21,9 @@ texture = ExtResource("2_eucd2")
 wait_time = 0.1
 
 [node name="Food" parent="." instance=ExtResource("6_yq2g3")]
-position = Vector2(25, 75)
-scale = Vector2(0.0492986, 0.044647)
+position = Vector2(22, 72)
+scale = Vector2(0.054, 0.05)
+offset = Vector2(500, 500)
 
 [node name="GameOverScene" parent="." instance=ExtResource("3_6h81c")]
 

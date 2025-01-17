@@ -39,7 +39,7 @@ func new_game():
 	$GameOverScene.hide()
 	highscore = score
 	score = 0
-	$ScoreScene.get_node("ScoreLabel").text = "SCORE: " + str(score)
+	$ScoreScene.get_node("ScoreLabel").text = "SCORE - " + str(score)
 	move_direction = up
 	can_move = true
 	generate_snake()
@@ -125,7 +125,7 @@ func check_food_eaten():
 		
 	if snake_data[0] == food_pos:
 		score += 1
-		$ScoreScene.get_node("ScoreLabel").text = "SCORE: " + str(score)
+		$ScoreScene.get_node("ScoreLabel").text = "SCORE - " + str(score)
 		add_segment(old_data[-1])
 		move_food()
 	
