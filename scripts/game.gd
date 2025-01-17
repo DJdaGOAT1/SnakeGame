@@ -14,6 +14,7 @@ var cell_size : int = 50
 #food variables
 var food_pos : Vector2
 var regen_food : bool = true
+var eat_yet : bool = false
 
 #snake variables
 var old_data : Array
@@ -39,7 +40,7 @@ func new_game():
 	$GameOverScene.hide()
 	highscore = score
 	score = 0
-	$ScoreScene.get_node("ScoreLabel").text = "SCORE - " + str(score)
+	$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
 	move_direction = up
 	can_move = true
 	generate_snake()
@@ -122,12 +123,13 @@ func check_food_eaten():
 	#if snake eats the food, add a segment and move the food
 	if(score >= highscore): 
 		highscore = score
-		
 	if snake_data[0] == food_pos:
+		$Crunching.play()
 		score += 1
-		$ScoreScene.get_node("ScoreLabel").text = "SCORE - " + str(score)
+		$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
 		add_segment(old_data[-1])
 		move_food()
+
 	
 func move_food():
 	while regen_food:
