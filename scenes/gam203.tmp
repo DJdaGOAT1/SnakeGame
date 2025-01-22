@@ -45,4 +45,3 @@ process_mode = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="restart" from="GameOverScene" to="." method="_on_game_over_scene_restart"]
-[connection signal="tree_exited" from="GameOverScene" to="." method="_on_game_over_scene_tree_exited"]

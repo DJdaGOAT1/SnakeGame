@@ -4,7 +4,7 @@ extends Node
 
 #game variables
 var score : int
-var highscore : int
+var highscore : int = 0
 var game_started : bool = false
 
 #grid variables
@@ -38,9 +38,9 @@ func new_game():
 	get_tree().paused = false
 	get_tree().call_group("segments", "queue_free")
 	$GameOverScene.hide()
-	highscore = score
 	score = 0
 	$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
+	$ScoreScene.get_node("HighScoreLabel").text = "HIGH-" + str(highscore)  # Display high score
 	move_direction = up
 	can_move = true
 	generate_snake()
@@ -120,9 +120,6 @@ func check_self_eaten():
 			end_game()
 			
 func check_food_eaten():
-	#if snake eats the food, add a segment and move the food
-	if(score >= highscore): 
-		highscore = score
 	if snake_data[0] == food_pos:
 		$Crunching.play()
 		score += 1
@@ -130,6 +127,10 @@ func check_food_eaten():
 		add_segment(old_data[-1])
 		move_food()
 
+		# Check if the new score exceeds the high score
+		if score > highscore:
+			highscore = score
+			$ScoreScene.get_node("HighScoreLabel").text = "HIGH-" + str(highscore)  # Update the high score label
 	
 func move_food():
 	while regen_food:
@@ -146,7 +147,10 @@ func end_game():
 	$Timer.stop()
 	game_started = false
 	get_tree().paused = true
+	if score > highscore:
+		highscore = score
+		$ScoreScene.get_node("HighScoreLabel").text = "HIGH-" + str(highscore)  # Update the high score label
 
 
-func _on_game_over_menu_restart():
-	new_game()
+func _on_game_over_scene_restart():
+	new_game() # Replace with function body.
