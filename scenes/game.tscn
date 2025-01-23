@@ -17,6 +17,8 @@ snake_scene = ExtResource("2_xj7ol")
 position = Vector2(500, 550)
 texture = ExtResource("2_eucd2")
 
+[node name="SnakePart" parent="." instance=ExtResource("2_xj7ol")]
+
 [node name="ScoreScene" parent="." instance=ExtResource("3_kemnk")]
 
 [node name="Timer" type="Timer" parent="."]
@@ -27,13 +29,14 @@ process_mode = 3
 position = Vector2(22, 72)
 scale = Vector2(0.054, 0.05)
 stream = ExtResource("5_3tubk")
+volume_db = 8.432
 
 [node name="Burp" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 position = Vector2(22, 72)
 scale = Vector2(0.054, 0.05)
 stream = ExtResource("6_dbr72")
-volume_db = 8.432
+volume_db = 7.495
 
 [node name="Food" parent="." instance=ExtResource("6_yq2g3")]
 position = Vector2(22, 72)

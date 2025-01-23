@@ -6,6 +6,7 @@ extends Node
 var score : int
 var highscore : int = 0
 var game_started : bool = false
+var check_sound : int
 
 #grid variables
 var cells : int = 20
@@ -30,12 +31,14 @@ var right = Vector2(1, 0)
 var move_direction : Vector2
 var can_move: bool
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_game()
 	
 func new_game():
 	get_tree().paused = false
+	check_sound = 0
 	get_tree().call_group("segments", "queue_free")
 	$GameOverScene.hide()
 	score = 0
@@ -121,6 +124,7 @@ func check_self_eaten():
 			
 func check_food_eaten():
 	if snake_data[0] == food_pos:
+		check_sound = 1
 		$Crunching.play()
 		score += 1
 		$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
@@ -144,6 +148,7 @@ func move_food():
 
 func end_game():
 	$GameOverScene.show()
+	$GameOverScene.get_node("Label2").text = "SCORE-" + str(score)
 	$Timer.stop()
 	game_started = false
 	get_tree().paused = true
