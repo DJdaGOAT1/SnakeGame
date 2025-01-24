@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c4qrurgihtfct" path="res://assets/apple.png" id="1_jrt13"]
 
-[node name="Food" type="Sprite2D"]
+[node name="Apple" type="Sprite2D"]
 scale = Vector2(0.061, 0.05)
 texture = ExtResource("1_jrt13")
 offset = Vector2(25, 25)

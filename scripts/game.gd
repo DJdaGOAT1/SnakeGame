@@ -6,7 +6,7 @@ extends Node
 var score : int
 var highscore : int = 0
 var game_started : bool = false
-var check_sound : int
+var foodswitch : int = 0
 
 #grid variables
 var cells : int = 20
@@ -38,10 +38,11 @@ func _ready():
 	
 func new_game():
 	get_tree().paused = false
-	check_sound = 0
 	get_tree().call_group("segments", "queue_free")
 	$GameOverScene.hide()
+	$Banana.hide()
 	score = 0
+	foodswitch = 0
 	$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
 	$ScoreScene.get_node("HighScoreLabel").text = "HIGH-" + str(highscore)  # Display high score
 	move_direction = up
@@ -124,12 +125,17 @@ func check_self_eaten():
 			
 func check_food_eaten():
 	if snake_data[0] == food_pos:
-		check_sound = 1
-		$Crunching.play()
+		if(foodswitch % 2 == 1): $Crunching.play()
+		if(foodswitch % 2 == 0): $Burp.play()
 		score += 1
 		$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
 		add_segment(old_data[-1])
-		move_food()
+		if(foodswitch % 2 == 0):
+			$Banana.hide()
+			move_food()
+		else:
+			$Apple.hide() 
+			move_food2()
 
 		# Check if the new score exceeds the high score
 		if score > highscore:
@@ -137,15 +143,29 @@ func check_food_eaten():
 			$ScoreScene.get_node("HighScoreLabel").text = "HIGH-" + str(highscore)  # Update the high score label
 	
 func move_food():
+	foodswitch += 1
 	while regen_food:
 		regen_food = false
 		food_pos = Vector2(randi_range(0, cells - 1), randi_range(0, cells - 1))
 		for i in snake_data:
 			if food_pos == i:
 				regen_food = true
-	$Food.position = (food_pos * cell_size)+ Vector2(0, cell_size)
+	$Apple.position = (food_pos * cell_size)+ Vector2(0, cell_size)
+	$Apple.show()
 	regen_food = true
 
+func move_food2():
+	foodswitch += 1
+	while regen_food:
+		regen_food = false
+		food_pos = Vector2(randi_range(0, cells - 1), randi_range(0, cells - 1))
+		for i in snake_data:
+			if food_pos == i:
+				regen_food = true
+	$Banana.show()
+	$Banana.position = (food_pos * cell_size)+ Vector2(0, cell_size)
+	regen_food = true
+	
 func end_game():
 	$GameOverScene.show()
 	$GameOverScene.get_node("Label2").text = "SCORE-" + str(score)
