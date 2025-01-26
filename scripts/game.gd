@@ -41,6 +41,8 @@ func new_game():
 	get_tree().call_group("segments", "queue_free")
 	$GameOverScene.hide()
 	$Banana.hide()
+	$Staffy.hide()
+	$Watson.hide()
 	score = 0
 	foodswitch = 0
 	$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
@@ -130,12 +132,26 @@ func check_food_eaten():
 		score += 1
 		$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
 		add_segment(old_data[-1])
-		if(foodswitch % 2 == 0):
+		if(foodswitch % 4 == 0):
 			$Banana.hide()
+			$Staffy.hide()
+			$Watson.hide()
 			move_food()
-		else:
-			$Apple.hide() 
+		elif(foodswitch % 4 == 1):
+			$Apple.hide()
+			$Staffy.hide()
+			$Watson.hide()
 			move_food2()
+		elif(foodswitch % 4 == 2):
+			$Apple.hide() 
+			$Banana.hide()
+			$Watson.hide()
+			move_food3()
+		else:
+			$Apple.hide()
+			$Banana.hide()
+			$Staffy.hide()
+			move_food4()
 
 		# Check if the new score exceeds the high score
 		if score > highscore:
@@ -166,6 +182,30 @@ func move_food2():
 	$Banana.position = (food_pos * cell_size)+ Vector2(0, cell_size)
 	regen_food = true
 	
+func move_food3():
+	foodswitch += 1
+	while regen_food:
+		regen_food = false
+		food_pos = Vector2(randi_range(0, cells - 1), randi_range(0, cells - 1))
+		for i in snake_data:
+			if food_pos == i:
+				regen_food = true
+	$Staffy.show()
+	$Staffy.position = (food_pos * cell_size)+ Vector2(0, cell_size)
+	regen_food = true
+
+func move_food4():
+	foodswitch += 1
+	while regen_food:
+		regen_food = false
+		food_pos = Vector2(randi_range(0, cells - 1), randi_range(0, cells - 1))
+		for i in snake_data:
+			if food_pos == i:
+				regen_food = true
+	$Watson.show()
+	$Watson.position = (food_pos * cell_size)+ Vector2(0, cell_size)
+	regen_food = true	
+
 func end_game():
 	$GameOverScene.show()
 	$GameOverScene.get_node("Label2").text = "SCORE-" + str(score)

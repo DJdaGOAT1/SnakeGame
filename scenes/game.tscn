@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://coocllnpe6i3y"]
+[gd_scene load_steps=12 format=3 uid="uid://coocllnpe6i3y"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_f8iw1"]
 [ext_resource type="Texture2D" uid="uid://bak8kiokvvgcu" path="res://assets/bg.png" id="2_eucd2"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://c7otjcxhxyx7c" path="res://audio/fast-burp-106002.mp3" id="6_dbr72"]
 [ext_resource type="PackedScene" uid="uid://6wobohs5brkt" path="res://food.tscn" id="6_yq2g3"]
 [ext_resource type="Texture2D" uid="uid://diqjragje3qjt" path="res://assets/banana.png" id="9_rbent"]
+[ext_resource type="Texture2D" uid="uid://flsdt58ssrbt" path="res://assets/staffybaffy.png" id="10_4fg0e"]
+[ext_resource type="Texture2D" uid="uid://dwus7okb1h8w0" path="res://assets/Watson.png" id="11_gp6f1"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_f8iw1")
@@ -52,6 +54,18 @@ offset = Vector2(500, 500)
 
 [node name="GameOverScene" parent="." instance=ExtResource("3_6h81c")]
 process_mode = 2
+
+[node name="Staffy" type="Sprite2D" parent="."]
+position = Vector2(5, 415)
+scale = Vector2(0.167984, 0.126374)
+texture = ExtResource("10_4fg0e")
+offset = Vector2(150, 180)
+
+[node name="Watson" type="Sprite2D" parent="."]
+position = Vector2(373.918, 221.773)
+scale = Vector2(0.410558, 0.296507)
+texture = ExtResource("11_gp6f1")
+offset = Vector2(57, 70)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="restart" from="GameOverScene" to="." method="_on_game_over_scene_restart"]
