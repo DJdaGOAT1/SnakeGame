@@ -98,7 +98,18 @@ func move_snake():
 
 func start_game():
 	game_started = true
-	$Timer.start()
+	if(foodswitch == 5):
+		$Timer2.start()
+	elif(foodswitch == 10):
+		$Timer3.start()
+	elif(foodswitch == 15):
+		$Timer4.start()
+	elif(foodswitch == 20):
+		$Timer5.start()
+	elif(foodswitch >= 25):
+		$Timer6.start()
+	else:
+		$Timer.start()
 
 
 func _on_timer_timeout():
@@ -118,11 +129,13 @@ func _on_timer_timeout():
 	
 func check_out_of_bounds():
 	if snake_data[0].x < 0 or snake_data[0].x > cells - 1 or snake_data[0].y < 0 or snake_data[0].y > cells - 1:
+		$OutEdgeHit.play()
 		end_game()
 		
 func check_self_eaten():
 	for i in range(1, len(snake_data)):
 		if snake_data[0] == snake_data[i]:
+			$HitItself.play()
 			end_game()
 			
 func check_food_eaten():
@@ -209,7 +222,18 @@ func move_food4():
 func end_game():
 	$GameOverScene.show()
 	$GameOverScene.get_node("Label2").text = "SCORE-" + str(score)
-	$Timer.stop()
+	if(foodswitch == 5):
+		$Timer2.stop()
+	elif(foodswitch == 10):
+		$Timer3.stop()
+	elif(foodswitch == 15):
+		$Timer4.stop()
+	elif(foodswitch == 20):
+		$Timer5.stop()
+	elif(foodswitch >= 25):
+		$Timer6.stop()
+	else:
+		$Timer.stop()
 	game_started = false
 	get_tree().paused = true
 	if score > highscore:

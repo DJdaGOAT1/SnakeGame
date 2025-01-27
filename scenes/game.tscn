@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://coocllnpe6i3y"]
+[gd_scene load_steps=14 format=3 uid="uid://coocllnpe6i3y"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_f8iw1"]
 [ext_resource type="Texture2D" uid="uid://bak8kiokvvgcu" path="res://assets/bg.png" id="2_eucd2"]
@@ -8,9 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://biv2qo282w4xx" path="res://audio/eating_an-apple-slowly-slowly-sfx-253209.mp3" id="5_3tubk"]
 [ext_resource type="AudioStream" uid="uid://c7otjcxhxyx7c" path="res://audio/fast-burp-106002.mp3" id="6_dbr72"]
 [ext_resource type="PackedScene" uid="uid://6wobohs5brkt" path="res://food.tscn" id="6_yq2g3"]
+[ext_resource type="AudioStream" uid="uid://cvbts0vyu0jbu" path="res://audio/cartoon-scream-1-6835.mp3" id="7_soosh"]
 [ext_resource type="Texture2D" uid="uid://diqjragje3qjt" path="res://assets/banana.png" id="9_rbent"]
 [ext_resource type="Texture2D" uid="uid://flsdt58ssrbt" path="res://assets/staffybaffy.png" id="10_4fg0e"]
 [ext_resource type="Texture2D" uid="uid://dwus7okb1h8w0" path="res://assets/Watson.png" id="11_gp6f1"]
+[ext_resource type="AudioStream" uid="uid://v6d76u2cu11h" path="res://audio/metallic-clang-100473.mp3" id="12_2jula"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_f8iw1")
@@ -27,6 +29,21 @@ texture = ExtResource("2_eucd2")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.08
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 0.04
+
+[node name="Timer4" type="Timer" parent="."]
+wait_time = 0.01
+
+[node name="Timer5" type="Timer" parent="."]
+wait_time = 0.008
+
+[node name="Timer6" type="Timer" parent="."]
+wait_time = 0.004
+
 [node name="Crunching" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 position = Vector2(22, 72)
@@ -40,6 +57,18 @@ position = Vector2(22, 72)
 scale = Vector2(0.054, 0.05)
 stream = ExtResource("6_dbr72")
 volume_db = 7.495
+
+[node name="HitItself" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(22, 72)
+scale = Vector2(0.054, 0.05)
+stream = ExtResource("7_soosh")
+volume_db = 7.495
+
+[node name="OutEdgeHit" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("12_2jula")
+volume_db = 5.622
 
 [node name="Banana" type="Sprite2D" parent="."]
 position = Vector2(66.4679, 109.717)
@@ -56,17 +85,22 @@ offset = Vector2(500, 500)
 process_mode = 2
 
 [node name="Staffy" type="Sprite2D" parent="."]
-position = Vector2(5, 415)
-scale = Vector2(0.167984, 0.126374)
+position = Vector2(4.01983, 415.023)
+scale = Vector2(0.209693, 0.138057)
 texture = ExtResource("10_4fg0e")
-offset = Vector2(150, 180)
+offset = Vector2(120, 180)
 
 [node name="Watson" type="Sprite2D" parent="."]
-position = Vector2(373.918, 221.773)
-scale = Vector2(0.410558, 0.296507)
+position = Vector2(364, 204)
+scale = Vector2(0.410558, 0.379446)
 texture = ExtResource("11_gp6f1")
 offset = Vector2(57, 70)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer4" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer5" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer6" to="." method="_on_timer_timeout"]
 [connection signal="restart" from="GameOverScene" to="." method="_on_game_over_scene_restart"]
 [connection signal="tree_exited" from="GameOverScene" to="." method="_on_game_over_scene_tree_exited"]
