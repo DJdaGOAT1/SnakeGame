@@ -43,6 +43,7 @@ func new_game():
 	$Banana.hide()
 	$Staffy.hide()
 	$Watson.hide()
+	$Garcia.hide()
 	score = 0
 	foodswitch = 0
 	$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
@@ -140,32 +141,43 @@ func check_self_eaten():
 			
 func check_food_eaten():
 	if snake_data[0] == food_pos:
-		if(foodswitch % 2 == 1): $Crunching.play()
-		if(foodswitch % 2 == 0): $Burp.play()
+		if(foodswitch % 5 == 1): $Crunching.play()
+		if(foodswitch % 5 == 2): $Burp.play()
+		if(foodswitch % 5 == 4): $WatsonAudio.play()
+		if(foodswitch % 5 == 0): $GarciaAudio.play()
 		score += 1
 		$ScoreScene.get_node("ScoreLabel").text = "SCORE-" + str(score)
 		add_segment(old_data[-1])
-		if(foodswitch % 4 == 0):
+		if(foodswitch % 5 == 0):
 			$Banana.hide()
 			$Staffy.hide()
 			$Watson.hide()
+			$Garcia.hide()
 			move_food()
-		elif(foodswitch % 4 == 1):
+		elif(foodswitch % 5 == 1):
 			$Apple.hide()
 			$Staffy.hide()
 			$Watson.hide()
+			$Garcia.hide()
 			move_food2()
-		elif(foodswitch % 4 == 2):
+		elif(foodswitch % 5 == 2):
 			$Apple.hide() 
 			$Banana.hide()
 			$Watson.hide()
+			$Garcia.hide()
 			move_food3()
+		elif(foodswitch % 5 == 3):
+			$Apple.hide()
+			$Banana.hide()
+			$Staffy.hide()
+			$Garcia.hide()
+			move_food4()
 		else:
 			$Apple.hide()
 			$Banana.hide()
 			$Staffy.hide()
-			move_food4()
-
+			$Watson.hide()
+			move_food5()
 		# Check if the new score exceeds the high score
 		if score > highscore:
 			highscore = score
@@ -217,7 +229,19 @@ func move_food4():
 				regen_food = true
 	$Watson.show()
 	$Watson.position = (food_pos * cell_size)+ Vector2(0, cell_size)
-	regen_food = true	
+	regen_food = true
+		
+func move_food5():
+	foodswitch += 1
+	while regen_food:
+		regen_food = false
+		food_pos = Vector2(randi_range(0, cells - 1), randi_range(0, cells - 1))
+		for i in snake_data:
+			if food_pos == i:
+				regen_food = true
+	$Garcia.show()
+	$Garcia.position = (food_pos * cell_size)+ Vector2(0, cell_size)
+	regen_food = true
 
 func end_game():
 	$GameOverScene.show()

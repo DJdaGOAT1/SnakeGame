@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://flsdt58ssrbt"
-path="res://.godot/imported/staffybaffy.png-b3df8151910dbaba11d6509fe2c1121c.ctex"
+uid="uid://bl4i22h4mwwpv"
+path="res://.godot/imported/staffybaffy.png-8ab77b12e02c8312e3c72ccadb83c8fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/staffybaffy.png"
-dest_files=["res://.godot/imported/staffybaffy.png-b3df8151910dbaba11d6509fe2c1121c.ctex"]
+source_file="res://scenes/staffybaffy.png"
+dest_files=["res://.godot/imported/staffybaffy.png-8ab77b12e02c8312e3c72ccadb83c8fe.ctex"]
 
 [params]
 

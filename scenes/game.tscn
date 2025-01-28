@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://coocllnpe6i3y"]
+[gd_scene load_steps=17 format=3 uid="uid://coocllnpe6i3y"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_f8iw1"]
 [ext_resource type="Texture2D" uid="uid://bak8kiokvvgcu" path="res://assets/bg.png" id="2_eucd2"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://flsdt58ssrbt" path="res://assets/staffybaffy.png" id="10_4fg0e"]
 [ext_resource type="Texture2D" uid="uid://dwus7okb1h8w0" path="res://assets/Watson.png" id="11_gp6f1"]
 [ext_resource type="AudioStream" uid="uid://v6d76u2cu11h" path="res://audio/metallic-clang-100473.mp3" id="12_2jula"]
+[ext_resource type="AudioStream" uid="uid://bqtdatpppnybj" path="res://audio/Watson.mp3" id="14_6im2c"]
+[ext_resource type="Texture2D" uid="uid://dimy6fwevxgeb" path="res://assets/garcia.png" id="14_jhpd0"]
+[ext_resource type="AudioStream" uid="uid://twwj4rmoxrav" path="res://audio/New Recording.mp3" id="14_x4e8o"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_f8iw1")
@@ -27,22 +30,28 @@ texture = ExtResource("2_eucd2")
 [node name="ScoreScene" parent="." instance=ExtResource("3_kemnk")]
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 3
 wait_time = 0.1
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 0.08
-
-[node name="Timer3" type="Timer" parent="."]
+process_mode = 3
 wait_time = 0.04
 
+[node name="Timer3" type="Timer" parent="."]
+process_mode = 3
+wait_time = 0.018
+
 [node name="Timer4" type="Timer" parent="."]
-wait_time = 0.01
+process_mode = 3
+wait_time = 0.006
 
 [node name="Timer5" type="Timer" parent="."]
-wait_time = 0.008
+process_mode = 3
+wait_time = 0.003
 
 [node name="Timer6" type="Timer" parent="."]
-wait_time = 0.004
+process_mode = 3
+wait_time = 0.001
 
 [node name="Crunching" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
@@ -63,7 +72,7 @@ process_mode = 3
 position = Vector2(22, 72)
 scale = Vector2(0.054, 0.05)
 stream = ExtResource("7_soosh")
-volume_db = 7.495
+volume_db = 24.0
 
 [node name="OutEdgeHit" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
@@ -95,6 +104,22 @@ position = Vector2(364, 204)
 scale = Vector2(0.410558, 0.379446)
 texture = ExtResource("11_gp6f1")
 offset = Vector2(57, 70)
+
+[node name="WatsonAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("14_6im2c")
+volume_db = 24.0
+
+[node name="GarciaAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("14_x4e8o")
+volume_db = 24.0
+
+[node name="Garcia" type="Sprite2D" parent="."]
+position = Vector2(75.25, 823)
+scale = Vector2(0.124317, 0.0762463)
+texture = ExtResource("14_jhpd0")
+offset = Vector2(200, 350)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
