@@ -99,18 +99,7 @@ func move_snake():
 
 func start_game():
 	game_started = true
-	if(foodswitch == 5):
-		$Timer2.start()
-	elif(foodswitch == 10):
-		$Timer3.start()
-	elif(foodswitch == 15):
-		$Timer4.start()
-	elif(foodswitch == 20):
-		$Timer5.start()
-	elif(foodswitch >= 25):
-		$Timer6.start()
-	else:
-		$Timer.start()
+	$Timer.start()
 
 
 func _on_timer_timeout():
@@ -246,18 +235,7 @@ func move_food5():
 func end_game():
 	$GameOverScene.show()
 	$GameOverScene.get_node("Label2").text = "SCORE-" + str(score)
-	if(foodswitch == 5):
-		$Timer2.stop()
-	elif(foodswitch == 10):
-		$Timer3.stop()
-	elif(foodswitch == 15):
-		$Timer4.stop()
-	elif(foodswitch == 20):
-		$Timer5.stop()
-	elif(foodswitch >= 25):
-		$Timer6.stop()
-	else:
-		$Timer.stop()
+	$Timer.stop()
 	game_started = false
 	get_tree().paused = true
 	if score > highscore:

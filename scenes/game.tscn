@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://coocllnpe6i3y"]
+[gd_scene load_steps=16 format=3 uid="uid://coocllnpe6i3y"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_f8iw1"]
 [ext_resource type="Texture2D" uid="uid://bak8kiokvvgcu" path="res://assets/bg.png" id="2_eucd2"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://flsdt58ssrbt" path="res://assets/staffybaffy.png" id="10_4fg0e"]
 [ext_resource type="Texture2D" uid="uid://dwus7okb1h8w0" path="res://assets/Watson.png" id="11_gp6f1"]
 [ext_resource type="AudioStream" uid="uid://v6d76u2cu11h" path="res://audio/metallic-clang-100473.mp3" id="12_2jula"]
-[ext_resource type="AudioStream" uid="uid://bqtdatpppnybj" path="res://audio/Watson.mp3" id="14_6im2c"]
 [ext_resource type="Texture2D" uid="uid://dimy6fwevxgeb" path="res://assets/garcia.png" id="14_jhpd0"]
 [ext_resource type="AudioStream" uid="uid://twwj4rmoxrav" path="res://audio/New Recording.mp3" id="14_x4e8o"]
 
@@ -32,26 +31,6 @@ texture = ExtResource("2_eucd2")
 [node name="Timer" type="Timer" parent="."]
 process_mode = 3
 wait_time = 0.1
-
-[node name="Timer2" type="Timer" parent="."]
-process_mode = 3
-wait_time = 0.04
-
-[node name="Timer3" type="Timer" parent="."]
-process_mode = 3
-wait_time = 0.018
-
-[node name="Timer4" type="Timer" parent="."]
-process_mode = 3
-wait_time = 0.006
-
-[node name="Timer5" type="Timer" parent="."]
-process_mode = 3
-wait_time = 0.003
-
-[node name="Timer6" type="Timer" parent="."]
-process_mode = 3
-wait_time = 0.001
 
 [node name="Crunching" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
@@ -107,7 +86,7 @@ offset = Vector2(57, 70)
 
 [node name="WatsonAudio" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("14_6im2c")
+stream = ExtResource("7_soosh")
 volume_db = 24.0
 
 [node name="GarciaAudio" type="AudioStreamPlayer2D" parent="."]
@@ -122,10 +101,5 @@ texture = ExtResource("14_jhpd0")
 offset = Vector2(200, 350)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer3" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer4" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer5" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer6" to="." method="_on_timer_timeout"]
 [connection signal="restart" from="GameOverScene" to="." method="_on_game_over_scene_restart"]
 [connection signal="tree_exited" from="GameOverScene" to="." method="_on_game_over_scene_tree_exited"]
