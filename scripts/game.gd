@@ -132,6 +132,7 @@ func check_food_eaten():
 	if snake_data[0] == food_pos:
 		if(foodswitch % 5 == 1): $Crunching.play()
 		if(foodswitch % 5 == 2): $Burp.play()
+		if(foodswitch % 5 == 3): $StaffyAudio.play()
 		if(foodswitch % 5 == 4): $WatsonAudio.play()
 		if(foodswitch % 5 == 0): $GarciaAudio.play()
 		score += 1

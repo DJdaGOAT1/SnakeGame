@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://coocllnpe6i3y"]
+[gd_scene load_steps=17 format=3 uid="uid://coocllnpe6i3y"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_f8iw1"]
 [ext_resource type="Texture2D" uid="uid://bak8kiokvvgcu" path="res://assets/bg.png" id="2_eucd2"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://v6d76u2cu11h" path="res://audio/metallic-clang-100473.mp3" id="12_2jula"]
 [ext_resource type="Texture2D" uid="uid://dimy6fwevxgeb" path="res://assets/garcia.png" id="14_jhpd0"]
 [ext_resource type="AudioStream" uid="uid://twwj4rmoxrav" path="res://audio/New Recording.mp3" id="14_x4e8o"]
+[ext_resource type="AudioStream" uid="uid://umn3ljfuqmpj" path="res://audio/My Movie 2.mp3" id="16_nsnss"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_f8iw1")
@@ -58,6 +59,21 @@ process_mode = 3
 stream = ExtResource("12_2jula")
 volume_db = 5.622
 
+[node name="WatsonAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("7_soosh")
+volume_db = 24.0
+
+[node name="GarciaAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("14_x4e8o")
+volume_db = 24.0
+
+[node name="StaffyAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("16_nsnss")
+volume_db = -0.762
+
 [node name="Banana" type="Sprite2D" parent="."]
 position = Vector2(66.4679, 109.717)
 scale = Vector2(0.120734, 0.139211)
@@ -68,9 +84,6 @@ offset = Vector2(200, 200)
 position = Vector2(22, 72)
 scale = Vector2(0.054, 0.05)
 offset = Vector2(500, 500)
-
-[node name="GameOverScene" parent="." instance=ExtResource("3_6h81c")]
-process_mode = 2
 
 [node name="Staffy" type="Sprite2D" parent="."]
 position = Vector2(4.01983, 415.023)
@@ -84,21 +97,14 @@ scale = Vector2(0.410558, 0.379446)
 texture = ExtResource("11_gp6f1")
 offset = Vector2(57, 70)
 
-[node name="WatsonAudio" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("7_soosh")
-volume_db = 24.0
-
-[node name="GarciaAudio" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("14_x4e8o")
-volume_db = 24.0
-
 [node name="Garcia" type="Sprite2D" parent="."]
 position = Vector2(75.25, 823)
 scale = Vector2(0.124317, 0.0762463)
 texture = ExtResource("14_jhpd0")
 offset = Vector2(200, 350)
+
+[node name="GameOverScene" parent="." instance=ExtResource("3_6h81c")]
+process_mode = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="restart" from="GameOverScene" to="." method="_on_game_over_scene_restart"]
