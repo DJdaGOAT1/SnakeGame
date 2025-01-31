@@ -31,7 +31,7 @@ texture = ExtResource("2_eucd2")
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 3
-wait_time = 0.079
+wait_time = 0.1
 
 [node name="Crunching" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
