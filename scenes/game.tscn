@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://coocllnpe6i3y"]
+[gd_scene load_steps=18 format=3 uid="uid://coocllnpe6i3y"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_f8iw1"]
 [ext_resource type="Texture2D" uid="uid://bak8kiokvvgcu" path="res://assets/bg.png" id="2_eucd2"]
@@ -9,8 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://c7otjcxhxyx7c" path="res://audio/fast-burp-106002.mp3" id="6_dbr72"]
 [ext_resource type="PackedScene" uid="uid://6wobohs5brkt" path="res://food.tscn" id="6_yq2g3"]
 [ext_resource type="AudioStream" uid="uid://cvbts0vyu0jbu" path="res://audio/cartoon-scream-1-6835.mp3" id="7_soosh"]
+[ext_resource type="AudioStream" uid="uid://bqtdatpppnybj" path="res://audio/Watson.mp3" id="9_oo1li"]
 [ext_resource type="Texture2D" uid="uid://diqjragje3qjt" path="res://assets/banana.png" id="9_rbent"]
-[ext_resource type="Texture2D" uid="uid://flsdt58ssrbt" path="res://assets/staffybaffy.png" id="10_4fg0e"]
+[ext_resource type="Texture2D" uid="uid://bl4i22h4mwwpv" path="res://assets/staffybaffy.png" id="10_4fg0e"]
 [ext_resource type="Texture2D" uid="uid://dwus7okb1h8w0" path="res://assets/Watson.png" id="11_gp6f1"]
 [ext_resource type="AudioStream" uid="uid://v6d76u2cu11h" path="res://audio/metallic-clang-100473.mp3" id="12_2jula"]
 [ext_resource type="Texture2D" uid="uid://dimy6fwevxgeb" path="res://assets/garcia.png" id="14_jhpd0"]
@@ -38,7 +39,7 @@ process_mode = 3
 position = Vector2(22, 72)
 scale = Vector2(0.054, 0.05)
 stream = ExtResource("5_3tubk")
-volume_db = 8.432
+volume_db = 5.181
 
 [node name="Burp" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
@@ -57,17 +58,16 @@ volume_db = 24.0
 [node name="OutEdgeHit" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("12_2jula")
-volume_db = 5.622
+volume_db = -0.321
 
 [node name="WatsonAudio" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("7_soosh")
-volume_db = 24.0
+stream = ExtResource("9_oo1li")
 
 [node name="GarciaAudio" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("14_x4e8o")
-volume_db = 24.0
+volume_db = 6.171
 
 [node name="StaffyAudio" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
